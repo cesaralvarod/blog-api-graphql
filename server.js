@@ -1,5 +1,5 @@
 require("./config/config");
-require("./config/db")
+require("./config/db");
 const express = require("express");
 const routes = require("./routes/");
 
