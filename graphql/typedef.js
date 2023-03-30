@@ -1,8 +1,8 @@
-const { GraphQLObjectType, GraphQLID, GraphQLString } = require("graphql");
+const { GraphQLObjectType, GraphQLID, GraphQLString } = require('graphql')
 
 const UserType = new GraphQLObjectType({
-  name: "UserType",
-  description: "The user type",
+  name: 'UserType',
+  description: 'The user type',
   fields: {
     id: { type: GraphQLID },
     username: { type: GraphQLString },
@@ -11,11 +11,11 @@ const UserType = new GraphQLObjectType({
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString },
   },
-});
+})
 
 const PostType = new GraphQLObjectType({
-  name: "PostType",
-  description: "The post type",
+  name: 'PostType',
+  description: 'The post type',
   fields: {
     authorId: { type: GraphQLID },
     id: { type: GraphQLID },
@@ -25,9 +25,9 @@ const PostType = new GraphQLObjectType({
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString },
   },
-});
+})
 
 module.exports = {
   UserType,
   PostType,
-};
+}

@@ -1,9 +1,9 @@
-const { GraphQLString } = require("graphql");
-const { createUser } = require("../../services/users/users.services");
+const { GraphQLString } = require('graphql')
+const { createUser } = require('../../services/users/users.services')
 
 const register = {
   type: GraphQLString,
-  description: "Register a new user.",
+  description: 'Register a new user.',
   args: {
     username: {
       type: GraphQLString,
@@ -19,6 +19,6 @@ const register = {
     },
   },
   resolve: (_, args) => createUser(args),
-};
+}
 
-module.exports = { register };
+module.exports = { register }

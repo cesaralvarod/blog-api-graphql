@@ -1,17 +1,17 @@
-const { verifyToken } = require("../utils/auth");
+const { verifyToken } = require('../utils/auth')
 
 const authenticate = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
+  const token = req.headers.authorization?.split(' ')[1]
 
   try {
-    const verified = verifyToken(token);
+    const verified = verifyToken(token)
 
-    req.verifiedUser = verified;
+    req.verifiedUser = verified
 
-    next();
+    next()
   } catch (err) {
-    next();
+    next()
   }
-};
+}
 
-module.exports = { authenticate };
+module.exports = { authenticate }

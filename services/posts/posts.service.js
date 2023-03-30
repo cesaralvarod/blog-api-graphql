@@ -1,15 +1,15 @@
-const Post = require("../../models/post/Post");
+const Post = require('../../models/post/Post')
 
 const getAllPosts = async () => {
-  return await Post.find();
-};
+  return await Post.find()
+}
 
 const createNewPost = async (params, verifiedUser) => {
-  if (!verifiedUser) throw new Error("Unauthorized");
+  if (!verifiedUser) throw new Error('Unauthorized')
 
-  const { user } = verifiedUser;
+  const { user } = verifiedUser
 
-  const { title, body, authorId, description } = params;
+  const { title, body, authorId, description } = params
 
   const newPost = await Post.create({
     title,
@@ -17,50 +17,50 @@ const createNewPost = async (params, verifiedUser) => {
     authorId,
     description,
     authorId: user._id,
-  });
+  })
 
-  return newPost;
-};
+  return newPost
+}
 
-const findPostById = async (id) => {
-  return await Post.findById(id);
-};
+const findPostById = async id => {
+  return await Post.findById(id)
+}
 
 const updatePostById = async (id, params, verifiedUser) => {
-  if (!verifiedUser) throw new Error("Unauthorized");
+  if (!verifiedUser) throw new Error('Unauthorized')
 
-  const { user } = verifiedUser;
+  const { user } = verifiedUser
 
-  const post = await findPostById(id);
+  const post = await findPostById(id)
 
-  if (!post) throw new Error("Post doesn't exist");
+  if (!post) throw new Error("Post doesn't exist")
 
   if (post.authorId.toString() !== user._id)
-    throw new Error("You can't modify this post");
+    throw new Error("You can't modify this post")
 
-  delete params.id;
+  delete params.id
 
-  const updatedPost = await Post.findByIdAndUpdate(id, params, { new: true });
+  const updatedPost = await Post.findByIdAndUpdate(id, params, { new: true })
 
-  return updatedPost;
-};
+  return updatedPost
+}
 
 const deletePostById = async (id, verifiedUser) => {
-  if (!verifiedUser) throw new Error("Unauthorized");
+  if (!verifiedUser) throw new Error('Unauthorized')
 
-  const { user } = verifiedUser;
+  const { user } = verifiedUser
 
-  const post = await findPostById(id);
+  const post = await findPostById(id)
 
-  if (!post) throw new Error("Post doesn't exist");
+  if (!post) throw new Error("Post doesn't exist")
 
   if (post.authorId.toString() !== user._id)
-    throw new Error("You can't modify this post");
+    throw new Error("You can't modify this post")
 
-  const deletedPost = await Post.findByIdAndDelete(id);
+  const deletedPost = await Post.findByIdAndDelete(id)
 
-  return deletedPost;
-};
+  return deletedPost
+}
 
 module.exports = {
   getAllPosts,
@@ -68,4 +68,4 @@ module.exports = {
   findPostById,
   updatePostById,
   deletePostById,
-};
+}

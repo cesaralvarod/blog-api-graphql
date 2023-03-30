@@ -1,9 +1,9 @@
-const { GraphQLString } = require("graphql");
-const { signIn } = require("../../services/authentication/auth.service");
+const { GraphQLString } = require('graphql')
+const { signIn } = require('../../services/authentication/auth.service')
 
 const login = {
   type: GraphQLString,
-  description: "Login an user.",
+  description: 'Login an user.',
   args: {
     email: {
       type: GraphQLString,
@@ -13,6 +13,6 @@ const login = {
     },
   },
   resolve: (_, args) => signIn(args),
-};
+}
 
-module.exports = { login };
+module.exports = { login }

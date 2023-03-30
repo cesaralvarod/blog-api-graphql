@@ -1,8 +1,8 @@
-const { Router } = require("express");
-const { authenticate } = require("../middlewares/auth.middleware");
+const { Router } = require('express')
+const { authenticate } = require('../middlewares/auth.middleware')
 
-const router = Router();
+const router = Router()
 
-router.use("/graphql", [authenticate], require("./graphql"));
+router.use('/graphql', [authenticate], require('./graphql'))
 
-module.exports = router;
+module.exports = router
